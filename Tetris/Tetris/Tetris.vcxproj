@@ -10,6 +10,24 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Board.cpp" />
+    <ClCompile Include="Configuration.cpp" />
+    <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Draw.cpp" />
+    <ClCompile Include="Keyboard.cpp" />
+    <ClCompile Include="Mouse.cpp" />
+    <ClCompile Include="Piece.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Block.h" />
+    <ClInclude Include="Board.h" />
+    <ClInclude Include="Configuration.h" />
+    <ClInclude Include="Draw.h" />
+    <ClInclude Include="Keyboard.h" />
+    <ClInclude Include="Mouse.h" />
+    <ClInclude Include="Piece.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{376C0E73-4356-4745-BC8D-E96269A237C7}</ProjectGuid>
     <RootNamespace>Tetris</RootNamespace>
@@ -38,7 +56,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Users\T520\Documents\GitHub\Tetris\glut;f:\Programozás\C++\boost_1_56_0;c:\Users\T520\Documents\GitHub\Tetris\OpenGL includes;c:\Users\T520\Documents\GitHub\Tetris\FreeType includes;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\T520\Documents\GitHub\Tetris\glut;f:\Programozás\C++\boost_1_56_0\stage\lib\vc;c:\Users\T520\Documents\GitHub\Tetris\OpenGL libs;c:\Users\T520\Documents\GitHub\Tetris\FreeType libs;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -63,8 +84,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
