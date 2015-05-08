@@ -1,7 +1,7 @@
 #include "Board.h"
 #include <iostream>
 
-Board::Board( int _BoardWidth, int _BoardHeight)
+Board::Board(int _BoardWidth, int _BoardHeight)
 {
 	BoardWidth = _BoardWidth;
 	BoardHeight = _BoardHeight;
@@ -18,40 +18,6 @@ Board::Board()
 Board::~Board()
 {
 
-}
-
-bool
-Board::isPossibleMoveDown()
-{
-	bool possible = true;
-	//ha padló
-	for (int i = 0; i < 4; i++)
-	{
-		if (ActivePiece.blocks[i].position.Y == BoardHeight-1)
-		{
-			return(false);
-		}
-	}
-
-	//ha másik elembe ütközik
-	for (int i = 0; i < 4; i++)
-	{
-		int pos = (ActivePiece.blocks[i].position.Y + 1) * BoardWidth + ActivePiece.blocks[i].position.X;
-
-		if (board[pos].type != Type::Empty)
-		{
-			for (int j = 0; j < 4; j++)
-			{
-				//TODO(máté):ez itt szar!
-				if (i != j &&
-					ActivePiece.blocks[j].position.Y * BoardWidth + ActivePiece.blocks[j].position.X == pos)
-				{
-					possible = false;
-				}
-			}
-		}
-	}
-	return(possible);
 }
 
 void

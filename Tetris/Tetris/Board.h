@@ -13,7 +13,6 @@ public:
 	int BoardHeight;
 	Block* board;
 
-
 	Board();
 	Board(int _BoardWidth,int _BoardHeight);
 	~Board();
@@ -22,7 +21,6 @@ public:
 	void AddActivePiecetoBoard();
 	void RemoveActivePiecefromBoard();
 
-	bool isPossibleMoveDown();
 private:
 	void DeleteRow(int _RowIndex);
 
@@ -31,6 +29,4 @@ private:
 	//Board(const Board& other);
 	Board& operator=(const Board& other);
 };
-
-
 #endif

@@ -16,7 +16,6 @@ enum Type
 	Filled
 };
 
-
 class Block
 {
 public:

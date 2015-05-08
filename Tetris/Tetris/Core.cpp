@@ -6,14 +6,14 @@
 #include <GL/glu.h>                                                                                                                                                                                                               
 #include <glut.h>  
 #include <time.h>
+#include <iostream>
 
-//#include "Keyboard.h"
 #include "Mouse.h"
 #include "Configuration.h"
 #include "Board.h"
 #include "Draw.h"
-#include <iostream>
 
+Board board = Board(8,12 );
 
 void
 onDisplay()
@@ -26,9 +26,6 @@ onDisplay()
 	glutSwapBuffers();     	
 }
 
-Board board = Board(8,12 );
-
-
 void
 onKeyboardDown(unsigned char _key, int _x, int _y)
 {
@@ -36,61 +33,49 @@ onKeyboardDown(unsigned char _key, int _x, int _y)
 	switch (_key)
 	{
 	case 'w':
-		board.RemoveActivePiecefromBoard();
 		board.ActivePiece.Rotate();
-		board.AddActivePiecetoBoard();
 		break;
 	case 'a':
-		board.RemoveActivePiecefromBoard();
 		board.ActivePiece.MoveLeft();
-		board.AddActivePiecetoBoard();
 		break;
 	case 'd':
-		board.RemoveActivePiecefromBoard();
 		board.ActivePiece.MoveRight();
-		board.AddActivePiecetoBoard();
 		break;
 	case 's':
-		if (board.isPossibleMoveDown())
+		if (board.ActivePiece.isPossibleMoveDown())
 		{
-			board.RemoveActivePiecefromBoard();
 			board.ActivePiece.MoveDown();
-			board.AddActivePiecetoBoard();
 		}
 		else
 		{
-			int next = 2;// Piece::getNextPiece();
+			int next = Piece::getNextPiece();
 			board.ActivePiece = Piece(next);
-			board.AddActivePiecetoBoard();
 		}
 		break;
-	
+
 	default:
 		break;
 	}
-	glutPostRedisplay();
+	board.AddActivePiecetoBoard();
 
+	glutPostRedisplay();
 }
 
 static void 
 TimerTick(int value)
 {
 	glutTimerFunc(1000, TimerTick, 0);
-
-	if (board.isPossibleMoveDown())
+	if (board.ActivePiece.isPossibleMoveDown())
 	{
 		board.RemoveActivePiecefromBoard();
 		board.ActivePiece.MoveDown();
-		board.AddActivePiecetoBoard();
 	}
 	else
 	{
-		board.drawBoard();
-		int next = 2;// Piece::getNextPiece();
+		int next =  Piece::getNextPiece();
 		board.ActivePiece = Piece(next);
-		board.AddActivePiecetoBoard();
-		board.drawBoard();
 	}
+	board.AddActivePiecetoBoard();
 	glutPostRedisplay();
 }
 
@@ -125,8 +110,8 @@ onInitialization(int argc, char **argv)
 
 }
 
-
-int main(int argc, char **argv)
+int 
+main(int argc, char **argv)
 {
 	onInitialization(argc, argv);
 

@@ -2,7 +2,6 @@
 #define GAME_PIECE_H
 
 #include "Block.h"
-
 namespace Pieces
 {
 	enum Type
@@ -35,17 +34,13 @@ public:
 	void MoveLeft();
 	void MoveRight();
 	void Drop();
+	bool isPossibleMoveDown();
+	bool isPossibleMoveRight();
+	bool isPossibleMoveLeft();
+
 
 private:
-
-
-
-
-
 	Piece(const Piece& other);
 	//Piece& operator=(const Piece& other);
-
 };
-
-
 #endif

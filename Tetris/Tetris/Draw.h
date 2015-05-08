@@ -1,7 +1,6 @@
 #ifndef DRAW_H
 #define DRAW_H                 
 
-
 #include "Board.h"
 
 static class Draw
